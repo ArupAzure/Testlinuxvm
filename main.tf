@@ -5,6 +5,13 @@ terraform {
       version = "~>3.0"
     }
   }
+
+  backend "azurerm" {
+    resource_group_name  = "terraform-backend-rg" # Replace with your resource group name for the backend
+    storage_account_name = "terraformstorage8971"  # Replace with your Azure Storage account name
+    container_name       = "tfstate"             # Replace with your container name
+    key                  = "terraform.tfstate"   # Path to the state file in the container
+  }
 }
 
 provider "azurerm" {
